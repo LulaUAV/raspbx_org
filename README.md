@@ -269,4 +269,268 @@ E303C
 E352
 K3520-z
 
+==================================================================================================
 
+Downloads
+Support for Raspbian 11 Bullseye:
+Please have a look at Ronald Raikes’ project who also supports Asterisk and FreePBX for the Raspberry Pi:
+
+FreePBX 15 or 16 plus Asterisk 15, 16, 17, 18, or 19 on a Raspberry Pi with Buster or Bullseye:
+
+https://www.dslreports.com/forum/r30661088-PBX-FreePBX-for-the-Raspberry-Pi
+
+Many thanks to Ronald who continuously updated his project over the years. Due to personal reasons it is unfortunately currently not possible to update the original RasPBX again in order to support the latest Pi 4 hardware revisions.
+
+RasPBX images based on Raspbian 10 Buster:
+The latest image supports Pi 4, Pi 3 and Pi 2 (Pi 1 and Pi zero no longer supported):
+
+Torrent	raspbx-10-10-2020.zip.torrent
+HTTP	raspbx-10-10-2020.zip
+SHA-1	b36d0cc9c4986611376df6ce5141cdc3ee296540
+Contents	Asterisk 16.13.0 & FreePBX 15.0.16.75
+An 8GB card or larger is recommended.
+
+Upgrades:
+Once your RasPBX has successfully booted, run this command on the console to install the latest additions and improvements (see upgrades list):
+
+raspbx-upgrade
+Notes:
+
+FreePBX 15 is still in beta stage at the time of this image release. It is recommended to enable “Set Module Admin to Edge mode” in Settings – Advanced Settings and then update all FreePBX modules from the edge track.
+In case the “Apply Config” button takes very long or never completes, set “Enable Module Signature Checking” to no in Settings – Advanced Settings.
+Pi 1 and Pi zero models are no longer supported. Please refer to the previous Stretch based images for Pi 1 and Pi zero hardware.
+Pi 4 with 8GB RAM hangs when running the upgrades. Pi 4 with 4GB or 2GB RAM is working fine.
+Changes:
+
+Upgrade to FreePBX 15
+Upgrade to Raspbian Buster, supported for 3 years from now
+Based on official Raspbian Buster Lite
+SSH login:
+user: root
+password: raspberry
+
+Older versions based on Raspbian Buster:
+
+Torrent	raspbx-11-11-2019.zip.torrent
+HTTP	raspbx-11-11-2019.zip
+SHA-1	3d403f60c9f08fae96de0a7dbc7df6b7834d84df
+Contents	Asterisk 16.6.1 & FreePBX 15.0.16.22
+Torrent	raspbx-06-10-2019.zip.torrent
+HTTP	raspbx-06-10-2019.zip
+SHA-1	a1e19a5c988e19ce85104d22b57621d1e95c1f06
+Contents	Asterisk 16.5.0 & FreePBX 15.0.16.19
+RasPBX images based on Raspbian 9 Stretch:
+This image supports Pi 3 B+, Pi 3, Pi 2, B+, B and A models with the following improvements and overall changes compared to the previous Raspbian Jessie based images:
+
+Upgrade to FreePBX 14 with many improvements and new features. Read all details on the FreePBX blog.
+Based on Raspberry Pi Foundation’s official Raspbian Stretch. Stretch ships with major package upgrades and changes, such as MariaDB which is replacing MySQL. MariaDB has better performance than MySQL, RasPBX users should notice a faster GUI compared to previous releases.
+PJSIP is now the default SIP stack listening on port 5060. Chan SIP is still available on port 5160.
+Zram replaces disk-based swap.
+Torrent	raspbx-04-04-2018.zip.torrent
+HTTP	raspbx-04-04-2018.zip
+SHA-1	8f473d01935da0347fbafb7f71c649914934c5b6
+Contents	Asterisk 13.20.0 & FreePBX 14.0.2.10
+A 4GB card is required.
+
+Upgrades:
+Once your RasPBX has successfully booted, run this command on the console to install the latest additions and improvements (see upgrades list):
+
+raspbx-upgrade
+Since the image posted on 28/01/2017 these fixes and improvements have been made:
+
+Upgrade to FreePBX 14 (latest stable release)
+Upgrade to Raspbian Stretch, supported for 3 years from now
+Based on official Raspbian Stretch Lite 2017-09-07 image
+MariaDB replaces MySQL
+Zram replaces disk-based swap
+SSH login:
+user: root
+password: raspberry
+
+Older versions based on Raspbian Stretch:
+raspbx-03-12-2017.zip.torrent
+SHA-1: 7d04b2087fbb4c9203013e5c783a79b5f348e05f
+Date: December 3rd 2017
+Contents: Asterisk 13.18.3 & FreePBX 14.0.1.20
+
+raspbx-10-10-2017.zip.torrent
+SHA-1: 783f85f9094c7d852aa08d70e640b7b51b687ee6
+Date: October 10th 2017
+Contents: Asterisk 13.17.1 & FreePBX 14.0.1.8
+
+RasPBX images based on Raspbian 8 Jessie
+Login details for all images below (user / password):
+SSH login: root / raspberry
+Default FreePBX login: admin / admin
+Mysql root password: raspberry
+
+Torrent	raspbx-28-01-2017.zip.torrent
+HTTP	raspbx-28-01-2017.zip
+SHA-1	f1721571a0c0dbdec9ec599af2453d719eea52a9
+Contents	Asterisk 13.13.1 & FreePBX 13.0.190.11
+A 4GB card is required.
+Changes:
+
+RasPBX Upgrades #1 – #24 included (see list)
+Including support for Pi 3, Pi 2, B+, B and A models
+Latest kernel 4.4.38+ and all Raspbian updates
+Note: When booting this image on a Pi 1 it usually takes around 5 minutes for Asterisk to start. On the Pi 2 and Pi 3 Asterisk starts after approx. 1 minute.
+
+Older versions based on Raspbian Jessie:
+
+raspbx-22-09-2016.zip.torrent
+SHA-1: bca50fd1d841b1292ebcaa78a1d996ee70b8ae04
+Date: September 22nd, 2016
+Contents: Asterisk 13.11.2 and FreePBX 13.0.188.8
+Changes:
+
+Shipping with Asterisk 13 by default
+RasPBX Upgrades #1 – #24 included (see list)
+Including support for Pi 3, Pi 2, B+, B and A models
+Latest kernel 4.4.13+ and all Raspbian updates
+raspbx-06-03-2016.zip.torrent
+SHA-1: 38665490e4ca3771ef39623c72019737d979e988
+Date: March 6th, 2016
+Contents: Asterisk 11.21.0 and FreePBX 13.0.74
+Changes:
+
+Added support for Pi 3
+Based on official Raspbian Jessie Lite 2015-11-21 image
+RasPBX Upgrades #1 – #21 included (see list)
+Including support for Pi 3, Pi 2, B+, B and A models
+Latest kernel 4.1.18+ and all Raspbian updates
+raspbx-25-01-2016.zip.torrent
+SHA-1: f1c24f3f2738e97cab46b716ac32dc0cb4d9e866
+Date: January 25th 2016
+Contents: Asterisk 11.21.0 and FreePBX 13.0.51
+Changes:
+
+Upgrade to FreePBX 13 (latest stable release)
+Based on official Raspbian Jessie Lite 2015-11-21 image
+RasPBX Upgrades #1 – #21 included (see list)
+Including support for Pi 2, B+, B and A models
+Latest kernel 4.1.15+ and all Raspbian updates
+raspbx-17-10-2015.zip.torrent
+SHA-1: f376767fcc71280ac18b82c42ea5896a09ca22c6
+Date: October 10th 2015
+Contents: Asterisk 11.20.0 and FreePBX 12.0.76.2
+Changes:
+
+RasPBX Upgrades #1 – #20 included (see list)
+Improved SD card I/O performance
+Including support for Pi 2, B+, B and A models
+Latest kernel 4.1.10+ and all Raspbian updates
+Note: SD card corruption can appear on a Pi 2
+raspbx-22-02-2015.zip.torrent
+SHA-1: 69ece60cd2d46813e69a8abb1a148057fde82a5d
+Date: February 22nd 2015
+Contents: Asterisk 11.15.0 and FreePBX 12.0.38
+Changes:
+
+Upgrade to Debian Jessie (supported for 3 years from now on)
+Upgrade to FreePBX 12 (latest stable release)
+RasPBX Upgrades #1 – #19 included
+Including support for Pi 2, B+, B and A models
+Latest kernel 3.18.6+ and all Raspbian updates
+Note: SD card corruption can appear on a Pi 2
+raspbx-09-02-2015.zip.torrent
+SHA-1: 42758916b6816d4ac5743343fd2dec3d5d06b8be
+Date: February 9th 2015
+Contents: Asterisk 11.15.0 and FreePBX 2.11.0.42
+Changes:
+
+Including support for Pi 2, B+, B and A models
+Upgrade to Debian Jessie (supported for 3 years from now on)
+Upgrades #1 – #19 included
+Latest kernel 3.18.6+ and all Raspbian updates
+Note: SD card corruption can appear on a Pi 2
+RasPBX images based on Raspbian 7 Wheezy
+Login details for all images below (user / password):
+SSH login: root / raspberry
+Default FreePBX login: admin / admin
+Mysql root password: raspberry
+
+raspbx-31-07-2014.zip.torrent
+SHA-1: 69d5c2eeda7b0b845931bb38e2807f2ef757481b
+Date: July 31st 2014
+Contents: Asterisk 11.11.0 and FreePBX 2.11.0.38
+Changes:
+
+Upgrades #1 – #18 included
+Including support for B+ models
+Latest kernel and all Raspbian updates
+Last image based on Debian Wheezy
+raspbx-14-02-2014.zip.torrent
+SHA-1: dc1dc8cf91cfda15456625b730999abe88f8f366
+Date: February 14th 2014
+Contents: Asterisk 11.6.0 & FreePBX 2.11.0.23
+Changes:
+
+Upgrades #1 – #17 included
+Latest FreePBX security fixes included
+Latest kernel 3.10.29+ and all Raspbian updates
+raspbx-12-08-2013.zip.torrent
+SHA-1: d451501323a2c169f6c6c00c217be9d8846b361b
+Date: August 12th 2013
+Contents: Asterisk 11.5.0 & FreePBX 2.11.0.10
+Changes:
+
+Upgrades #1 – #14 included
+Latest kernel 3.6.11+ and all Raspbian updates
+raspbx-27-04-2013.zip.torrent
+SHA-1: 97afba03ad80c2b89dee7d427424ce355e64643c
+Date: April 27th 2013
+Contents: Asterisk 11.3.0 & FreePBX 2.11.0.0rc1.2
+Changes:
+
+Upgrades #1 – #11 included
+Latest kernel 3.6.11+ and all Raspbian updates
+Installed additional FreePBX modules: Asterisk Logfiles, Announcements, Conferences, IVR, Queues, Ring Groups, Motif (Google Voice)
+Fixed issues with symlinked config files due to recent changes in FreePBX
+Installed sox and mpg123 for MOH conversion
+Increased PHP upload max filesize and max post size to 20MB
+raspbx-19-01-2013.zip.torrent
+SHA-1: 14a76ae4c3eac0a46e8caf77cc6dad68c75b1a9c
+Date: January 19th 2013
+Contents: Asterisk 11.1.2 & FreePBX 2.11.0.0beta2.2
+Changes:
+
+Upgrades #1 – #5 included
+Latest kernel 3.6.11+ and all Raspbian updates (improved speed!)
+Upgraded to Asterisk 11 / FreePBX 2.11
+Deleted some obsolete files –> smaller image zip file
+raspbx-04-11-2012.zip.torrent
+SHA-1: 6517759a7b4c899d25b3ab3d1d1e1b44379afbda
+Date: November 4th 2012
+Contents: Asterisk 1.8.15.1 & FreePBX 2.10.1.2
+Changes:
+
+Upgrades #1 – #4 included
+Moved swap partition to swap file
+Upgraded backup & restore module
+raspbx-12-09-2012.zip.torrent
+SHA-1: 303d178a84d28c8437ae8282f2dc59fbd910a91c
+Date: September 12th 2012
+Contents: Asterisk 1.8.15.1 & FreePBX 2.10.0
+Changes:
+
+Raspbian (Debian Wheezy) based
+Latest kernel 3.2.27+ included
+Additional kernel modules (iptables, ppp_mppe and others) included
+Email delivery with Exim4
+Watchdog enabled: automatic reboot after serious crash
+Automatic update of ssh host keys on first boot
+Startup script bugfix: console appears also without ntp
+RasPBX images based on Raspbian 6 Sqeeze
+debian6-asterisk-14-07-2012.zip.torrent
+SHA-1: 931407a3eac4360f2cff074a86124d68c74b2441
+Date: July 14th 2012
+Contents: Asterisk 1.8.14.0 & FreePBX 2.10.0
+Changes:
+
+fixed CDR reports
+added additional sounds from core sounds, music on hold and extra sounds
+removed unused packages (xserver, etc.)
+improved startup script: Asterisk only starts after correct system time has been obtained through ntp
+added log file rotation for Asterisk and FreePBX logs
+The first image published on June 2nd 2012 is no longer available for download.
