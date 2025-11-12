@@ -184,3 +184,89 @@ nameserver 127.0.0.1
 Then reload:
 
 /etc/init.d/dnsmasq restart
+
+==================================================================================================
+
+GSM VoIP Gateway with Chan_dongle
+
+A highly affordable GSM VoIP gateway can be obtained using Huawei E155X or compatible USB modems and chan_dongle, providing both inbound and outbound calls on GSM/3G networks.
+
+Hardware requirements
+Chan_dongle is able to work with many different USB modems from Huawei, such as K3715, E169 / K3520, E155X, E175X, K3765 and others. Read the full compatibility list here.
+Before connecting the modem to your RPi, be sure to use a power supply rated at least 1A, better 1.2A or more. If your power supply does not provide enough current to power both the RPi and the modem, you can get problems booting the RPi, or calls to/from the GSM network fail with error “dongle disconnected”.
+Alternatively a powered USB hub can be used as well. If you want to use 2 modems, an additional WiFi connection or other devices that require considerable amount of current, a powered USB hub is absolutely required.
+In case you are using one of the older 256MB models with F1 and F2 still in place, you might want to consider bridging over F1 and F2, read more details here. This is however not required on the newer 512MB models, or when using a powered USB hub.
+
+Not all Huawei USB modems work out of the box, on some of them voice calling capability has to be enabled first, some need to be upgraded with the latest firmware. Details on this can be found on the original chan_dongle wiki.
+Before inserting the SIM into your modem please deactivate the PIN on your card. This can be done with any phone. Insert the SIM into your phone, deactivate PIN and you’re done. You can also use the Mobile Partner software – which comes with the modem itself – on a Windows computer to do this.
+
+Setup and configuration
+Once your modem has PIN deactivated, latest firmware and voice enabled, run this command:
+
+ install-dongle
+This installer script installs chan_dongle.so, and creates an initial configuration. The script is provided with upgrade #11 (and improved further with upgrade #12). Once the installer has finished, connect your modem to the RPi. If it was connected already before, unplug it now and plug it in again. Some older modems still require usb_modeswitch to enable data/audio mode, for those a complete reboot of the RPi is recommended at this point.
+
+Then log into FreePBX, in Connectivity – Trunks click Add Custom Trunk. Provide a trunk name, set Outbound CallerID to the number of your SIM, and enter in the field Custom Dial String:
+
+dongle/dongle0/$OUTNUM$
+Add an outbound route to use this trunk, as well as an incoming route. On the incoming route set DID Number to your SIM number, precisely matching the number you entered when running the install-dongle script.
+
+More details on how to setup inbound and outbound routes can be found in the forum.
+
+Sending and receiving SMS
+The install-dongle script provides a few basic options to send and receive SMS. Received messages can be forwarded by email. If no email address is specified, messages are stored in /var/log/asterisk/sms.txt instead.
+Additionally, received messages can optionally be forwarded to a mobile phone number on top of sending them by email. This is done through the first dongle0, your mobile operator’s charges apply for sending SMS.
+In order to send out custom messages, a password protected web page can be activated during the install-dongle run. This page is located at http://raspbx/sms or http://raspbx.local/sms (for Mac).
+A web page for sending USSDs is optionally available. Install it with:
+
+apt-get install ussd-webpage
+The page can be found at http://raspbx/ussd or http://raspbx.local/ussd (for Mac).
+
+Troubleshooting
+If it doesn’t work at this point, at first check if the interfaces of your modem match the configuration:
+
+ls -l /dev/tty*
+2 devices, ttyUSB1 and ttyUSB2 should show up. If the numbers are different, something like ttyUSB0 and ttyUSB1, edit /etc/asterisk/dongle.conf and change the values below [dongle0] accordingly.
+Many modems require the usb_modeswitch program to switch over from CD-drive mode (for installing Windows drivers) to modem mode. The /dev/ttyUSB devices will not appear before the switch-over was done. Make sure to have all the latest upgrades on recent Debian Jessie based images to fix some initial bugs with usb_modeswitch. If your modem is still not switching it might be necessary to add a custom rule for usb_modeswitch.
+
+Some users have reported voice calling with a specific mobile operator was not working, while using a sim card from a different provider with the same modem and RPi worked perfectly fine.
+
+Troubleshooting power problems
+In case the modem devices ttyUSB1 and ttyUSB2 are disappearing as soon as a call is set up (or also at other times), and later they appear again, it is most likely the modem is not sufficiently powered and thus disconnects again and again. Try these options:
+
+Remove any USB extension cord from the modem and connect it directly.
+In case a powered USB hub is used, try a different one or even try without it. With some of those hubs the modems just don’t work properly, although the current rating of the hub’s power supply is high enough.
+If the modem is directly connected to the RPi (without a hub), the power supply has to power them both. Try different power supplies, as some have problems to keep their output voltage stable under higher load.
+As a last resort, you can also try to use a different modem.
+For more information, read the complete documentation here:
+
+https://github.com/bg111/asterisk-chan-dongle/wiki
+
+Modems reported working/not working
+On top of the compatibility list on the original chan_dongle wiki, users of RasPBX have reported several modems to work fine with the RPi:
+
+E153
+E1550
+E1552
+E156G
+E160
+EG162
+E166
+E169
+E171
+E173 (some types of E173 seem to not work, only E173 with Qualcomm chipsets do work)
+E1750
+E180
+E303
+K3520 (not to confuse with K3520-z)
+K3715
+K3765a
+The following modems had issues and could not me made working so far. Please let us know if they work for you nonetheless:
+
+E150
+E1752
+E303C
+E352
+K3520-z
+
+
